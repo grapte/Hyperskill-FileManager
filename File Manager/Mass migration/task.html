@@ -1,0 +1,112 @@
+<div class="step-text">
+<h5 id="description">Description</h5>
+<p>Our file manager has basic functionality, including navigation, viewing file sizes, renaming files and folders, moving files, and copying files. However, it can be time-consuming to act on individual files, such as deleting 1000 text files while leaving 80 image files untouched. To address this, we can add name templates to our manager for more efficient large-scale work.</p>
+<p>The premise is simple. Instead of operating on a single file, the user can input a file extension (for example, .txt), and the file manager will act on every file with that extension in the current working directory.</p>
+<h5 id="objectives">Objectives</h5>
+<p>In this stage, your file manager should:</p>
+<ul>
+<li>Support all the commands from the previous stage;</li>
+<li>Accept the <code class="language-python">rm</code> command along with a file extension. Delete all files with that file extension in the current working directory. For example, <code class="language-python">rm .txt</code> will delete all files of <em>.txt</em> type in the current working directory:
+	<ul>
+<li>If the user inputs the name of a file type that doesn't exist in the current working directory, the file manager should output the message: <code class="language-python">File extension {extension} not found in this directory</code>.</li>
+</ul>
+</li>
+<li>Accept the <code class="language-python">cp</code> command along with a file extension. Copy all files with that extension in the current working directory to a target directory.
+	<ul>
+<li>If the user inputs the name of a file extension that doesn't exist in the current working directory, the file manager should output the message: <code class="language-python">File extension {extension} not found in this directory</code>;</li>
+<li>If the destination location already has a file with that name, halt the process, and output the prompt: <code class="language-python">{filename} already exists in this directory. Replace? (y/n)</code> and take input from the user. If the user inputs <code class="language-python">y</code> , replace the file in the destination folder with the new one. If the user inputs <code class="language-python">n</code>, do not copy this file over; instead, move on to the next file(s) to be copied. If the user inputs anything else, repeat the question.</li>
+</ul>
+</li>
+<li>Update the <code class="language-python">mv</code> command to move all files with that file extension in the current working directory to a target directory if a file extension is input. Do not also update the <code class="language-python">mv</code> renaming feature to work with file extensions:
+	<ul>
+<li>If the user inputs the name of a file extension that doesn't exist in the current working directory, the file manager should output the message: <code class="language-python">File extension {extension} not found in this directory</code>;</li>
+<li>If the destination location already has a file with that name, halt the process and output the prompt: <code class="language-python">{filename} already exists in this directory. Replace? (y/n)</code> and take input from the user. If the user inputs <code class="language-python">y</code>, replace the file in the destination folder with the new file. If the user inputs <code class="language-python">n</code>, do not copy this file over. Instead, move on to the next file(s) to be copied. If the user inputs anything else, repeat the question.</li>
+</ul>
+</li>
+</ul>
+<h5 id="examples">Examples</h5>
+<p>The greater-than symbol followed by a space (<code class="language-python">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+<p><strong>Example 1:</strong> <em>removing all files of a given file extension via </em><code class="language-python">rm</code></p>
+<pre><code class="language-python">Input the command
+&gt; pwd
+C:\Users\Cheryl
+&gt; ls
+Backup
+test.txt
+test1.txt
+test2.txt
+seminar_notes.txt
+ascii_art_texture_practice.txt
+&gt; rm .txt
+&gt; ls
+Backup
+&gt; rm .txt
+File extension .txt not found in this directory
+&gt; rm .jpg
+File extension .jpg not found in this directory
+&gt; rm .bats
+File extension .bats not found in this directory
+&gt; quit</code></pre>
+<p><strong>Example 2:</strong> <em>copying all files of a given file extension via</em> <code class="language-python">cp</code></p>
+<pre><code class="language-python">Input the command
+&gt; pwd
+C:\Users\Cheryl
+&gt; ls
+Backup
+test.txt
+&gt; cd Backup
+Backup
+&gt; ls
+test.txt
+test1.txt
+test2.txt
+seminar_notes.txt
+ascii_art_texture_practice.txt
+&gt; cp .tx ..
+File extension .tx not found in this directory
+&gt; cp .txt ..
+test.txt already exists in this directory. Replace? (y/n)
+&gt; y
+&gt; ls
+test.txt
+test1.txt
+test2.txt
+seminar_notes.txt
+ascii_art_texture_practice.txt
+&gt; cd ..
+Cheryl
+&gt; ls
+Backup
+test.txt
+test1.txt
+test2.txt
+seminar_notes.txt
+ascii_art_texture_practice.txt
+&gt; quit</code></pre>
+<p><strong>Example 3:</strong> <em>moving all files of a given extension via</em> <code class="language-python">mv</code></p>
+<pre><code class="language-python">Input the command
+&gt; pwd
+C:\Users\Cheryl\Backup
+&gt; ls
+&gt; cd ..
+Cheryl
+&gt; ls
+Backup
+test.txt
+test1.txt
+test2.txt
+seminar_notes.txt
+ascii_art_texture_practice.txt
+&gt; mv .txt Backup
+&gt; ls
+Backup
+&gt; cd Backup
+Backup
+&gt; ls
+test.txt
+test1.txt
+test2.txt
+seminar_notes.txt
+ascii_art_texture_practice.txt
+&gt; quit</code></pre>
+</div>

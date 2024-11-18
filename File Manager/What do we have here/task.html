@@ -1,0 +1,112 @@
+<div class="step-text">
+<h5 id="description">Description</h5>
+<p>The previous stage was a good start. However, we need directories to store something... and there is not much use in browsing them when you can't even see their content. Let's fix that. </p>
+<p>In this stage, we will implement a new command to get quick info about the state of the current directory. The name of the command is <code class="java">ls</code>. The user can use <code class="java">ls</code> in three different ways:</p>
+<ul>
+<li><code class="java">ls</code> prints the list of files and subdirectories in the current directory.</li>
+<li><code class="java">ls -l</code> prints the list of subdirectories and the list of files, and for each file, it specifies its size in bytes. </li>
+<li><code class="java">ls -lh</code> outputs the size of files in a human-readable format. The size of each file can be indicated not only in bytes but also in kilobytes, megabytes, or gigabytes. This way, it'll be much more convenient to read the list of files and find the largest one in the folder, in case you need that! </li>
+</ul>
+<h5 id="objectives">Objectives</h5>
+<p>In this stage, your program should:</p>
+<ul>
+<li>Support all the commands from the previous stage. The interaction between the user and the program remains the same: the user inputs a command, the program outputs the result, accepts a new command, and so on.</li>
+<li>Provide a new command — <code class="java">ls</code> . If the user inputs <code class="java">ls</code> without arguments, print the list of subdirectories and files in the current directory. 
+	<ul>
+<li>The program should print the names of the files together with extensions. For example, <code class="java">test.txt</code> (instead of just <code class="java">test</code>) </li>
+<li>The list of subdirectories should precede the list of files. </li>
+<li>The order of items in these lists is irrelevant.</li>
+<li>The program shouldn't output anything if there are no files and subdirectories. </li>
+</ul>
+</li>
+<li>If the user inputs <code class="java">ls -l</code>, the program should output the same lists. However, the list of files should also contain the size of each file <strong>in bytes</strong>. This information can be found via <code class="java">os.stat(filename).st_size</code>. The name of the file and its size should be separated by one space character. </li>
+<li>If the user inputs <code class="java">ls -lh</code>, the program should output the same lists together with the sizes of the files. However, the size should be printed in human-readable format:
+	<ul>
+<li>the size should be converted to bytes, kilobytes, megabytes, or gigabytes, depending on the file size. Then, the converted size and the unit should be printed. For example, <code class="java">100MB</code> or <code class="java">1GB</code>. </li>
+<li>See the table below for details:</li>
+</ul>
+</li>
+</ul>
+<table border="1" cellpadding="1" cellspacing="1" style="width: 800px;">
+<thead>
+<tr>
+<th>Size of the file</th>
+<th>Output format</th>
+<th>Example of the output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; 1024 bytes (&lt; 1 KB)</td>
+<td><code class="java">&lt;size&gt;B</code></td>
+<td><code class="java">608B</code>, <code class="java">900B</code></td>
+</tr>
+<tr>
+<td>1 KB (1024 B) &lt;= size &lt; 1 MB (1024 KB)</td>
+<td><code class="java">&lt;size&gt;KB</code></td>
+<td><code class="java">600KB</code></td>
+</tr>
+<tr>
+<td>1 MB (1024 KB) &lt;= size &lt; 1 GB (1024 MB)</td>
+<td><code class="java">&lt;size&gt;MB</code></td>
+<td><code class="java">550MB</code></td>
+</tr>
+<tr>
+<td>&gt;= 1 GB (1024 MB)</td>
+<td><code class="java">&lt;size&gt;GB</code></td>
+<td><code class="java">2GB</code></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the number of bytes, kilobytes, megabytes, and gigabytes should be integer. If the calculated size of the file is not an integer, round it to the nearest integer.</p>
+<h5 id="examples">Examples</h5>
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+<p><strong>Example 1:</strong></p>
+<pre><code class="language-no-highlight">Input the command
+&gt; pwd
+C:\Users\User
+&gt; cd ..
+Users
+&gt; ls
+User
+mouse.jpg
+&gt; cd User
+User
+&gt; pwd
+C:\Users\User
+&gt; quit</code></pre>
+<p><strong>Example 2</strong><strong>:</strong></p>
+<pre><code class="language-no-highlight">Input the command
+&gt; pwd
+C:\Users\User\PycharmProjects\File Manager
+&gt; cd ..
+PycharmProjects
+&gt; ls
+Hangman
+Search Engine
+Spell Checker
+test.txt
+readme.md
+image.png
+&gt; ls -l
+Hangman
+Search Engine
+Spell Checker
+test.txt 47302
+image.png 5767168
+movie.mp4 2684354560
+&gt; ls -lh
+Hangman
+Search Engine
+Spell Checker
+test.txt 46KB
+image.png 5MB
+movie.mp4 2GB
+&gt; cd Hangman
+Hangman
+&gt; ls -l
+readme.md 0
+&gt; ls -lh
+readme.md 0B
+&gt; quit</code></pre>
+</div>

@@ -1,0 +1,26 @@
+<div class="step-text">
+<p></p><h5 id="description">Description</h5><p>We know you know what a file manager is. Remember Windows Explorer? You can view files and folders in a directory and navigate between folders using icons or by entering a directory path. </p><p>Our file manager will do the same things, but with one exception: it'll be a text-based manager, not a visual one. You'll control the manager with text commands instead of clicking on icons and interacting with menus — <em>so old school</em>. </p><p>Let's start with implementing the navigation feature. It enables us to go from one directory to another. In the later stages, we can perform some actions on files within these directories.</p><p>Your file manager should be able to execute the following commands: </p><ul><li><p><code class="java">pwd</code> tells you in which directory you currently are</p></li><li><p><code class="java">cd</code> changes the current directory </p></li></ul><p>Moreover, the <code class="java">cd</code> command can have the following attributes to specify in which directory the file manager should move to:</p><ul><li><p><code class="java">cd C:\folder1\folder2</code> moves from the current directory to the directory with the absolute path of <em>C:\folder1\folder2</em>. In other words, after this command is entered, the current directory should be changed to <em>folder2</em> located on disk <em>C:</em> inside <em>folder1</em>;</p></li><li><p><code class="java">cd ..</code> moves one directory up. That is if the current directory is <em>C:\folder1\folder2</em>, the current directory is changed to <em>C:\folder1;</em></p></li><li><p><code class="java">cd folder2</code> (when the user is in <code class="java">C:\folder1</code>) moves to the relative file path. The current directory should be changed to <code class="java">C:\folder1\folder2</code>.</p></li></ul><h5 id="objectives">Objectives</h5><p>In this stage, your program should:</p><ol><li><p>Print the prompt message: <code class="java">Input the command</code></p></li><li><p>Take the command from the user. </p><ul><li><p>If the command is <code class="java">pwd</code>, print the absolute path of the current directory. <br/>Note<strong>:</strong> The starting directory is the one where your file manager program is located. For example, if your file manager program has an absolute path <em>C:\Users\user\Projects\FileManager\manager.py</em>, and the first user command is <code class="java">pwd</code>, the file manager should print <code class="java">C:\Users\user\Projects\FileManager</code>.</p></li><li><p>If the command is <code class="java">cd ..</code>, move one level up from your current directory. Print the name of the new current folder.</p></li><li><p>If the command is <code class="java">cd path\path\path</code> (that is, <code class="java">cd</code> with a relative folder path), move to the folder specified by the user. Print the name of the new current folder.</p></li><li><p>If the user inputs any other command (including <code class="java">cd</code> with no arguments), print the error message: <code class="java">Invalid command</code>.</p></li><li><p>In case the specified file or directory does not exist, handle the error using <code class="java">FileNotFoundError</code> and print an error message of your choice. After the error message, the program should ask for input again.</p></li></ul></li><li><p>Keep on taking new commands from the user until they type <code class="java">quit</code>. If the user types <code class="java">quit</code>, quit the program. </p></li></ol><h5 id="example">Example</h5><p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p><p><strong>Example 1:</strong></p><pre><code class="language-no-highlight">Input the command
+&gt; pwd
+C:\Users\User\PycharmProjects\File Manager
+&gt; cd ..
+PycharmProjects
+&gt; pwd
+C:\Users\User\PycharmProjects
+&gt; cd ..
+User
+&gt; pwd
+C:\Users\User
+&gt; cd C:\Users\Documents
+Documents
+&gt; cd C:\Users\Documents\Report
+Report
+&gt; cd ..
+Documents
+&gt; cd
+Invalid command
+&gt; ppp
+Invalid command
+&gt; pwd
+C:\Users\Documents
+&gt; quit</code></pre>
+</div>

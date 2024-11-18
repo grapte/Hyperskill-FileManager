@@ -1,0 +1,110 @@
+<div class="step-text">
+<h5 id="description">Description</h5>
+<p>Removing files and directories will allow us to empty some space. But sometimes, we delete things that we should have kept safe. Before we increase the scale of our work, let's make some commands that can copy files and move them to other directories.</p>
+<p>For safekeeping:</p>
+<ul>
+<li><code class="language-python">cp</code> copies a file and saves that copy in a new directory</li>
+<li><code class="language-python">mv</code> now, additionally, can move a file to a new directory</li>
+</ul>
+<h5 id="objectives">Objectives</h5>
+<p>In this stage, your file manager should:</p>
+<ul>
+<li>Support all the commands from the previous stage.</li>
+<li>Support the new <code class="language-python">cp</code> command: 
+	<ul>
+<li>This command copies a file.</li>
+<li>The user should specify the paths. For example, <code class="language-python">cp C:\Users\Alex\Documents\test.txt C:\Users</code> to copy the file from the <em>Documents</em> folder and place that copy in the <em>Users</em> folder;</li>
+<li>The user doesn't have to specify the absolute path to the file or folder. They can use a relative path. If the current working directory is <code class="language-python">C:\Users</code>, and the user inputs the command <code class="language-python">cp test.txt Alex</code>, the file manager should copy the file <code class="language-python">C:\Users\test.txt</code> and save that copy in <code class="language-python">C:\Users\Alex</code>;</li>
+<li>If the user didn't specify any file, the file manager should output the message: <code class="language-python">Specify the file</code>;</li>
+<li>If the user inputs the name of a file or folder that doesn't exist, output the message: <code class="language-python">No such file or directory</code>;</li>
+<li>If the user specifid more than two names in the command, output a message: <code class="language-python">Specify the current name of the file or directory and the new location and/or name</code>;</li>
+<li>If the destination location already has a file with that name, for example, <code class="language-python">cp Alex\test.txt Alex</code>, do not copy it. Instead, output the message: <code class="language-python">{filename} already exists in this directory</code>.</li>
+</ul>
+</li>
+<li>3. Expand the functionality of the <code class="language-python">mv</code> command:
+	<ul>
+<li>This command can rename or move a file;</li>
+<li>The user can specify absolute or relative paths, as described in <code class="language-python">cp</code> above;</li>
+<li>If the user specifies a path, move the file to that new location. For example, <code class="language-python">mv test.txt Alex</code> will move <em>test.txt</em> from the current directory to the subdirectory <em>Alex</em>.</li>
+<li>If the user specifies a different filename for the target folder, move the file to the target folder and rename the file to that different filename. For example, <code class="language-python">mv Alex\text.txt Alex\Documents\lorem_ipsum.txt</code> will remove <em>text.txt</em> from the <em>Alex</em> directory and put it into the <em>Alex\Documents</em> directory with the new name <em>lorem_ipsum.txt</em>;</li>
+<li>If the user didn't specify exactly two names in the command, output a message: <code class="language-python">Specify the current name of the file or directory and the new location and/or name</code>;</li>
+<li>If the destination location already has a file with that name, do not move the file. Instead, output the message: <code class="language-python">The file or directory already exists</code>.</li>
+</ul>
+</li>
+</ul>
+<h5 id="examples">Examples</h5>
+<p>The greater-than symbol followed by a space (<code class="language-python">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+<p><strong>Example 1:</strong> c<em>opying a file</em></p>
+<pre><code class="language-python">Input the command
+&gt; pwd
+C:\Users\Cheryl
+&gt; ls
+Backup
+test.txt
+&gt; cp test.txt Backup
+&gt; ls
+Backup
+test.txt
+&gt; cd Backup
+Backup
+&gt; ls
+test.txt
+&gt; quit</code></pre>
+<p><strong>Example 2:</strong> <em>moving a file</em></p>
+<pre><code class="language-python">Input the command
+&gt; pwd
+C:\Users\User\Games
+&gt; ls
+Project1
+Project2
+Trash
+&gt; cd Project2
+Project2
+&gt; ls
+game.exe
+crashlog.txt
+&gt; mv crashlog.txt C:Users\User\Games\Trash
+crashlog.txt already exists in this directory
+&gt; mv crashlog.txt C:Users\User\Games\Trash\crashlog2.txt
+&gt; cd ..
+Games
+&gt; cd Trash
+Trash
+&gt;ls
+crashlog.txt
+crashlog2.txt
+&gt; rm crashlog.txt
+&gt; rm crashlog2.txt
+&gt; quit</code></pre>
+<p><strong>Example 3:</strong> a<em> variety of commands</em></p>
+<pre><code class="language-python">Input the command
+&gt; pwd
+D:\PyCharmProjects
+&gt; ls
+Hangman
+Search Engine
+readme.txt
+&gt; cp readme.txt Hangman
+&gt; ls
+Hangman
+Search Engine
+readme.txt
+&gt; cd D:\PycharmProjects\Hangman
+Hangman
+&gt; ls
+readme.txt
+&gt; cp readme.txt ..
+readme.txt already exists in this directory
+&gt; rm readme.txt
+&gt; cd ..
+PycharmProjects
+&gt;mv readme.txt Hangman\hreadme.txt
+ls
+Hangman
+Search Engine
+&gt; cd D:\PycharmProjects\Hangman
+Hangman
+&gt; ls
+hreadme.txt
+&gt; quit</code></pre>
+</div>

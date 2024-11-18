@@ -1,0 +1,49 @@
+<div class="step-text">
+<p></p><h5 id="description">Description</h5><p>We can now inspect the content of any directory. Our program lists all files in the directory by command and specifies their size. We can use that to find the largest file in the directory, for example, and get rid of it to clean up some space. But wait, our file manager doesn't know how to do it yet.</p><p>Well, not for long. In this stage, we'll teach our file handler a few new tricks: </p><ul><li><p><code class="java">rm</code> deletes a specified file or a directory;</p></li><li><p><code class="java">mv</code> renames any file or directory;</p></li><li><p><code class="java">mkdir</code> creates a new directory.</p></li></ul><p>In this stage, our file manager will start correcting user mistakes. For example, if the user wants to remove a file that doesn't exist, the file manager should notify them about that and cancel the execution of the command. </p><h5 id="objectives">Objectives</h5><p>In this stage, your file manager should:</p><ul><li><p>Support all the commands from the previous stage;</p></li><li><p>Support the new <code class="java">rm</code> command: </p><ul><li><p>The command deletes a file or a folder</p></li><li><p>The user should specify the path to the file or the folder meant to be deleted. For example: <code class="java">rm C:\Users\Alex\Documents\test.txt</code> or <code class="java">rm D:\Photos</code></p></li><li><p>The user doesn't have to specify the absolute path to the file or folder. They can specify a relative path as they did with <code class="java">cd</code> in the previous step. For example, <code class="java">rm test.txt</code> will remove <em>test.txt</em> from the current directory. In this case, the current directory is the starting point for the relative path. If the current directory is <code class="java">C:\Users</code>, and the user inputs <code class="java">rm test.txt</code>, the file manager should delete the file that's located at <em>C:\Users\test.txt</em>. </p></li><li><p>If the user didn't specify any file or folder name, the file manager should output <code class="java">Specify the file or directory</code></p></li><li><p>If the user inputs the name of a file or folder that doesn't exist, output <code class="java">No such file or directory</code></p></li></ul></li><li><p>Support the new <code class="java">mv</code> command: </p><ul><li><p>The command renames a file or folder</p></li><li><p>The user should specify the name of the file or folder to be renamed and the new desired name. For example, <code class="java">mv old_name.txt new_name.txt</code>. </p></li><li><p>For now, let's only support renaming the files that are located in the current directory</p></li><li><p>If the user didn't specify exactly two names in the command, output <code class="java">Specify the current name of the file or directory and the new name</code></p></li><li><p>If the user wants to rename a file or folder that doesn't exist, output <code class="java">No such file or directory</code></p></li><li><p>If there's already a file or folder with the same name as was specified in the user's input, output <code class="java">The file or directory already exists</code>. If on Unix and using <code class="java">os.rename</code>, you may need to check if the input file exists first because the file will be renamed without raising an exception if the program has the necessary permissions.</p></li></ul></li><li><p>4. Support the new <code class="java">mkdir</code> command: </p><ul><li><p>The command creates a new folder</p></li><li><p>If the user didn't specify a folder name, output an error message <code class="java">Specify the name of the directory to be made</code></p></li><li><p>The user should specify the absolute or relative path of the new directory, for example: <code class="java">mkdir D:\Projects\NewProject</code> or <code class="java">mkdir NewProject</code>. </p></li><li><p>If such a directory already exists, output an error message <code class="java">The directory already exists</code></p></li></ul></li></ul><h5 id="examples">Examples</h5><p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p><p><strong>Example 1: </strong><em>removing</em><strong><em> </em></strong><em>directories</em></p><pre><code class="language-no-highlight">Input the command
+&gt; pwd
+D:\PyCharmProjects
+&gt; ls
+Hangman
+Search Engine
+readme.txt
+&gt; rm Hanhman
+No such file or directory
+&gt; rm Hangman
+&gt; ls
+Search Engine
+readme.txt
+&gt; rm
+Specify the file or directory
+&gt; rm Search Engine
+&gt; ls
+readme.txt
+&gt; quit</code></pre><p><strong>Example 2: </strong><em>renaming a file</em></p><pre><code class="language-no-highlight">Input the command
+&gt; pwd
+E:\SecretFolder
+&gt; ls
+VerySecret
+very_personal_image.jpg
+&gt; mv image.jpg random.jpg
+No such file or directory
+&gt; mv very_personal_image.jpg ordinary_image.jpg
+&gt; ls
+VerySecret
+ordinary_image.jpg
+&gt; quit</code></pre><p><strong>Example 3:</strong> creating a new directory</p><pre><code class="language-no-highlight">Input the command
+&gt; pwd
+E:\SecretFolder
+&gt; cd E:\SecretFolder\VerySecret
+&gt; ls
+VeryVerySecret
+&gt; mkdir
+Specify the name of the directory to be made
+&gt; mkdir VeryVerySecret
+The directory already exists
+&gt; ls
+VeryVerySecret
+&gt; mkdir VerySecret_2
+&gt; ls
+VerySecret_2
+VeryVerySecret
+&gt; quit</code></pre>
+</div>
